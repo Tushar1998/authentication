@@ -16,27 +16,28 @@ const checkRequestBody = (req, res, next) => {
     let validationArray;
     console.log(req.url);
     switch (req.url) {
-        case '/signUp':
+        case '/signup':
             validationArray = ["email", "password", "confirmPassword"];
-            let result = validationArray.every((key) => {
-                return req.body[key] && req.body[key].trim().length;
-            });
-            if (!result) {
-                sendErrorMessage(new AppError(400, "Unsucessfull", "Invalid Request Body"), req, res);
-            }
             break;
-        case '/signIn':
+        case '/login':
             validationArray = ["email", "password"];
+            break; 
         default:
             return sendErrorMessage(new AppError(404, "Unsucessfull", "Requested request not found"), req, res);
 
     };
+    let result = validationArray.every((key) => {
+        return req.body[key] && req.body[key].trim().length;
+    });
+    if (!result) {
+        sendErrorMessage(new AppError(400, "Unsucessfull", "Invalid Request Body"), req, res);
+    }
     next();
 }
 
 // Is Email Valid Function
 const isEmailValid = (req, res, next) => {
-    
+
     next();
 }
 

@@ -7,6 +7,8 @@ const userRoutes = require('./routes/userRoutes.js')
 const app = express();
 
 dotenv.config({ path: './config.env' });
+
+app.use(express.static())
 app.use(express.json());
 app.use('/users', userRoutes);
 

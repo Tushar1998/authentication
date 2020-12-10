@@ -4,7 +4,8 @@ const path = require('path');
 // Third party imports
 const uniqid = require('uniqid');
 const bcrypt = require('bcryptjs');
-const jwt = require('jwtwebtoken');
+// const jwt = require('jwtwebtoken');
+const generateToken = require('../helpers/jwtAuthentication.js');
 
 const User = require('../models/userModel.js');
 
@@ -29,7 +30,9 @@ const signUpUser = (req, res) => {
 const loginUser = async (req, res) => {
     try {
         let result = await bcrypt.compare(req.body.password, req.currentUser.password);
+        let jwtToken = await generateToken({ email: req.currentUser.email }, process.env.JWT_SECRET, {expiresIn:'1d'})
 
+        res.cookie('jwt', jwtToken);
 
         if (!result) {
             sendErrorMessage(new AppError(401, "Unsucessfull", "Password is incorrect"), req, res);
