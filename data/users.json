@@ -1,0 +1,38 @@
+[
+  {
+    "userId": "9zr52mbrkiho7yv0",
+    "email": "mistry@gmail.com",
+    "password": "$2a$10$qIvn0K.sdd9BCl1YgaqUveKmcsA2syRK5LgGkRwzAbaDdYcu3kRpi",
+    "createdAt": 1607533971531
+  },
+  {
+    "userId": "9zr52mgkkiho9hab",
+    "email": "mistry.tushar@gmail.com",
+    "password": "$2a$10$oSsJAzdpm0gxeF5.TW8JbuSs8s2uwlvhyTLJRQiwtE9TM/xyR4gCW",
+    "createdAt": 1607534042050
+  },
+  {
+    "userId": "9zr52mlrkihoaeuk",
+    "email": "mistry.tushar98@gmail.com",
+    "password": "$2a$10$eP092k4snkFLifAvDlSwwe2onhzVoyyIDQHMoRc/Tn9ayBdnSzJPC",
+    "createdAt": 1607534085548
+  },
+  {
+    "userId": "9zr52mupkihoc61y",
+    "email": "mistry.tushar9@gmail.com",
+    "password": "$2a$10$aDIDUmuH7hdbfYXa08baGu2vA9ESSLnCHNWbg4J8OM0/hmbWVKPVi",
+    "createdAt": 1607534167461
+  },
+  {
+    "userId": "9zr52n18kihodpqg",
+    "email": "mistry.tush@gmail.com",
+    "password": "$2a$10$gNUNb8GCaFufCPHGkZnZvOx.8dERCoNznOpV.qTlpIETrVgKUI.Ym",
+    "createdAt": 1607534239623
+  },
+  {
+    "userId": "9zr52o0fkihoojhm",
+    "email": "mistry.tuh@gmail.com",
+    "password": "$2a$10$/8C3qn5mn5405uBpTsxOhOseCLSUoU6YPFA1YjYOSgqSui70Xm3Cm",
+    "createdAt": 1607534744745
+  }
+]
