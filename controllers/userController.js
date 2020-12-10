@@ -4,11 +4,11 @@ const path = require('path');
 // Third party imports
 const uniqid = require('uniqid');
 const bcrypt = require('bcryptjs');
-// const jwt = require('jwtwebtoken');
+
+// Custom Modules
 const { generateToken } = require('../helpers/jwtAuthentication.js');
 
 const User = require('../models/userModel.js');
-
 const AppError = require('../helpers/appError.js')
 const sendErrorMessage = require('../helpers/sendError.js');
 // const sendResponse = require('../helpers/sendResponse.js');
@@ -23,6 +23,7 @@ const signUpUser = (req, res) => {
         if (err) {
             return sendErrorMessage(new AppError(401, "Unsucessfull", "Invalid Request"), req, res);
         }
+        console.log();
         res.send('User Created');
     })
 

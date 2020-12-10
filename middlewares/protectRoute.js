@@ -8,7 +8,7 @@ const sendErrorMessage = require('../helpers/sendError.js');
 const fileName = path.join(__dirname, "..", "data", "users.json");
 const users = JSON.parse(fs.readFileSync(fileName, "utf-8"));
 const protectRoute = async (req, res, next) => {
-    //   console.log("headers in req body", req.headers.authorization);
+    // console.log("headers in req body", req.headers.authorization);
     // extract token
     if (!req.headers.authorization) {
         return sendErrorMessage(
@@ -40,7 +40,7 @@ const protectRoute = async (req, res, next) => {
         );
     }
     // check verification
-    req.currentUser = currentUser;
+    req.currentUser = currentUser; 
     // give access
     next();
 };
