@@ -6,7 +6,6 @@ const dotenv = require('dotenv');
 
 // Routes Controllers
 const userRoutes = require('./routes/userRoutes.js');
-const taskRoutes = require('./routes/taskRoutes.js')
 
 // Custom Modules
 const protectRoute = require('./middlewares/protectRoute.js');
@@ -25,7 +24,6 @@ app.get('/dashboard', protectRoute, (req, res) => {
 
 app.use(express.json());
 app.use('/users', userRoutes);
-app.use('/tasks', taskRoutes);
 
 app.listen(process.env.PORT, () => {
     console.log(`Server start at http://localhost:${process.env.PORT}`);

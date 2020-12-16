@@ -35,14 +35,14 @@ const loginUser = async (req, res) => {
 
         res.cookie('jwt', jwtToken);
         res.status(200).json({
-            status: "Sucessfull",
+            status: "User sucessfully logged in",
             data: [{ jwt: jwtToken }]
-        })
+        });
         if (!result) {
             sendErrorMessage(new AppError(401, "Unsucessfull", "Password is incorrect"), req, res);
         }
         // res.cookie( );
-        res.send("User logged in Sucessfully");
+        // res.send("User logged in Sucessfully");
     } catch (err) {
         sendErrorMessage(new AppError(401, "Unsucessfull", "Password is incorrect"), req, res);
     }

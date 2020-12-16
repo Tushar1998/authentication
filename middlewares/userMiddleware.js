@@ -10,6 +10,7 @@ const users = JSON.parse(fs.readFileSync(fileName, 'utf-8'));
 
 const sendErrorMessage = require('../helpers/sendError.js');
 const AppError = require('../helpers/appError.js');
+const { send } = require('process');
 
 // checking the body sent by the user
 const checkRequestBody = (req, res, next) => {
@@ -21,7 +22,7 @@ const checkRequestBody = (req, res, next) => {
             break;
         case '/login':
             validationArray = ["email", "password"];
-            break; 
+            break;
         default:
             return sendErrorMessage(new AppError(404, "Unsucessfull", "Requested request not found"), req, res);
 
@@ -37,7 +38,9 @@ const checkRequestBody = (req, res, next) => {
 
 // Is Email Valid Function
 const isEmailValid = (req, res, next) => {
-
+    if (!req.body.email.includes('@')) {
+        sendErrorMessage(new AppError(400, "Unsucessful", "Not a valid Email address"), req, res);
+    }
     next();
 }
 
@@ -74,14 +77,6 @@ const hashPassword = async (req, res, next) => {
 }
 
 
-//login function
-//check for email and password in the body
-// check if email and pasword are not empty
-// check if emial exists in database
-
-// find the user with email
-
-// checking if the user is registered or not when logging in
 const isUserRegistered = (req, res, next) => {
     let findUser = users.find(user => {
         return user.email == req.body.email
