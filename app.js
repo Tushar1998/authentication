@@ -19,33 +19,40 @@ dotenv.config({ path: "./config.env" });
 
 app.use(express.static(path.join(__dirname, "public")));
 
-// DashBoard Frontend
+app.get("*", (req, res) => {
+	res.json({
+		status: "SucessFull",
+		message: "404 Please specific correct route",
+	});
+});
+
 app.get("/dashboard", protectRoute, (req, res) => {
-  res.sendFile(path.join(__dirname, "public", "dashboard.html"));
+	res.sendFile(path.join(__dirname, "public", "dashboard.html"));
 });
 
 app.use(express.json());
 app.use(cors());
 
-if (process.env.DATABASE === "mongoDB") {
-  app.use("/users", userMongoRoutes);
-  mongoose.connect(
-    process.env.DB_CONNECTION,
-    {
-      useNewUrlParser: true,
-      useFindAndModify: true,
-      useUnifiedTopology: true,
-    },
-    () => {
-      app.listen(process.env.PORT, () => {
-        console.log(`Server start at http://localhost:${process.env.PORT}`);
-      });
-      console.log("Connected to DB!");
-    }
-  );
+if (process.env.DATABASE === "MONGODB") {
+	app.use("/users", userMongoRoutes);
+	mongoose.connect(
+		process.env.DB_CONNECTION,
+		{
+			useNewUrlParser: true,
+			useFindAndModify: true,
+			useUnifiedTopology: true,
+			useCreateIndex: true,
+		},
+		() => {
+			app.listen(process.env.PORT, () => {
+				console.log(`Server start at http://localhost:${process.env.PORT}`);
+			});
+			console.log("Connected to DB!");
+		}
+	);
 } else if (process.env.DATABASE === "JSON") {
-  app.use("/users", userRoutes);
-  app.listen(process.env.PORT, () => {
-    console.log(`Server start at http://localhost:${process.env.PORT}`);
-  });
+	app.use("/users", userRoutes);
+	app.listen(process.env.PORT, () => {
+		console.log(`Server start at http://localhost:${process.env.PORT}`);
+	});
 }

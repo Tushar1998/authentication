@@ -3,25 +3,15 @@ const router = express.Router();
 
 const { signUpUser, loginUser } = require("../controllers/userMongoControllers");
 const {
-  checkRequestBody,
-  isEmailValid,
-  isEmailUnique,
-  checkConfirmPassword,
-  hashPassword,
-  isUserRegistered,
+	checkRequestBody,
+	checkConfirmPassword,
+	hashPassword,
 } = require("../middlewares/userMiddleware.js");
 
-router
-  .route("/signup")
-  .post(
-    checkRequestBody,
-    isEmailValid,
-    isEmailUnique,
-    checkConfirmPassword,
-    hashPassword,
-    signUpUser
-  );
+const isUserRegistered = require("../middlewares/userMongoMiddlewares");
+
+router.route("/signup").post(checkRequestBody, checkConfirmPassword, hashPassword, signUpUser);
 router.route("/login").post(checkRequestBody, isUserRegistered, loginUser);
-router.route("/logout").get();
+// router.route("/logout").get();
 
 module.exports = router;
