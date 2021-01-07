@@ -14,6 +14,7 @@ const AppError = require("../helpers/appError.js");
 // checking the body sent by the user
 const checkRequestBody = (req, res, next) => {
 	let validationArray;
+	console.log(req.body);
 	console.log(req.url);
 	switch (req.url) {
 		case "/signup":
