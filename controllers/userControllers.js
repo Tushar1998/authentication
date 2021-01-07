@@ -28,24 +28,21 @@ const signUpUser = (req, res) => {
 	});
 };
 
-
 const loginUser = async (req, res) => {
 	try {
 		let result = await bcrypt.compare(req.body.password, req.currentUser.password);
 		let jwtToken = await generateToken({ email: req.currentUser.email }, process.env.JWT_SECRET, {
 			expiresIn: "1d",
 		});
-
+		if (!result) {
+			sendErrorMessage(new AppError(401, "Unsucessfull", "Password is incorrect"), req, res);
+		}
 		res.cookie("jwt", jwtToken);
 		res.status(200).json({
 			status: "Sucessfull",
 			data: [{ jwt: jwtToken }],
+			message: "User logged in",
 		});
-		if (!result) {
-			sendErrorMessage(new AppError(401, "Unsucessfull", "Password is incorrect"), req, res);
-		}
-
-		res.send("User logged in Sucessfully");
 	} catch (err) {
 		sendErrorMessage(new AppError(401, "Unsucessfull", "Password is incorrect"), req, res);
 	}

@@ -8,9 +8,11 @@ const {
 	hashPassword,
 } = require("../middlewares/userMiddleware.js");
 
-const isUserRegistered = require("../middlewares/userMongoMiddlewares");
+const { isUserRegistered, isEmailUnique } = require("../middlewares/userMongoMiddlewares");
 
-router.route("/signup").post(checkRequestBody, checkConfirmPassword, hashPassword, signUpUser);
+router
+	.route("/signup")
+	.post(checkRequestBody, isEmailUnique, checkConfirmPassword, hashPassword, signUpUser);
 router.route("/login").post(checkRequestBody, isUserRegistered, loginUser);
 // router.route("/logout").get();
 
