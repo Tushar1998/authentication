@@ -30,13 +30,14 @@ const loginUser = async (req, res) => {
 	try {
 		// let result = await bcrypt.compare(req.body.password, req.currentUser.password);
 		let result = await bcrypt.compare(req.body.password, findUser.password);
+		if (!result) {
+			sendErrorMessage(new AppError(401, "Unsucessfull", "Password is incorrect"), req, res);
+		}
+		
 		let jwtToken = await generateToken({ email: findUser.email }, process.env.JWT_SECRET, {
 			expiresIn: "1d",
 		});
 
-		if (!result) {
-			sendErrorMessage(new AppError(401, "Unsucessfull", "Password is incorrect"), req, res);
-		}
 		res.cookie("jwt", jwtToken);
 		res.status(200).json({
 			status: "Sucessfull",
