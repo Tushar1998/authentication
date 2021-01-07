@@ -4,5 +4,11 @@
     "email": "mistry.tushar98@gmail.com",
     "password": "$2a$10$12JGb93bL6jb5ROyabSbe./gs6eDrJ6v4nAZ8M0Kzr/Atc3/0hR.q",
     "createdAt": 1609958711361
+  },
+  {
+    "userId": "9zr5jtrkjmieef2",
+    "email": "venu.sirpuram@raweng.com",
+    "password": "$2a$10$TdOWO2Rxy6uo0ElyRXf1..EixhcWdF5UjW7gJ3EXaA2dZRU11obda",
+    "createdAt": 1610003307133
   }
 ]

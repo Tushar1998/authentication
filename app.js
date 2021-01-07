@@ -19,12 +19,12 @@ dotenv.config({ path: "./config.env" });
 
 app.use(express.static(path.join(__dirname, "public")));
 
-app.get("*", (req, res) => {
-	res.json({
-		status: "SucessFull",
-		message: "404 Please specific correct route",
-	});
-});
+// app.get("*", (req, res) => {
+// 	res.json({
+// 		status: "SucessFull",
+// 		message: "404 Please specific correct route",
+// 	});
+// });
 
 app.get("/dashboard", protectRoute, (req, res) => {
 	res.sendFile(path.join(__dirname, "public", "dashboard.html"));
