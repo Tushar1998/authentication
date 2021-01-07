@@ -50,7 +50,7 @@ if (process.env.DATABASE === "MONGODB") {
 			console.log("Connected to DB!");
 		}
 	);
-} else if (process.env.DATABASE === "JSON") {
+} else if (process.env.DATABASE === "FS") {
 	app.use("/users", userRoutes);
 	app.listen(process.env.PORT, () => {
 		console.log(`Server start at http://localhost:${process.env.PORT}`);
