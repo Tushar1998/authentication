@@ -24,7 +24,10 @@ const signUpUser = (req, res) => {
 			return sendErrorMessage(new AppError(401, "Unsucessfull", "Invalid Request"), req, res);
 		}
 		console.log();
-		res.send("User Created");
+		res.json({
+			status: "Sucessfull",
+			data: newUser,
+		});
 	});
 };
 
