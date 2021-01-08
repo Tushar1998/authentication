@@ -74,14 +74,6 @@ const hashPassword = async (req, res, next) => {
 	}
 };
 
-//login function
-//check for email and password in the body
-// check if email and pasword are not empty
-// check if emial exists in database
-
-// find the user with email
-
-// checking if the user is registered or not when logging in
 const isUserRegistered = (req, res, next) => {
 	let findUser = users.find((user) => {
 		return user.email == req.body.email;
