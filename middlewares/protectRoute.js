@@ -7,6 +7,8 @@ const sendErrorMessage = require('../helpers/sendError.js');
 
 const fileName = path.join(__dirname, "..", "data", "users.json");
 const users = JSON.parse(fs.readFileSync(fileName, "utf-8"));
+
+// Protect the url for logged in users by this funtion
 const protectRoute = async (req, res, next) => {
     // console.log("headers in req body", req.headers.authorization);
     // extract token
